@@ -1,8 +1,13 @@
 const express = require("express");
-const router = express.Router();
+const connectDB = require("./db");
 
-router.get("/hello", (req, res) => {
-  res.json({ message: "Hello Abubakar, your full-stack app is running!" });
+const app = express();
+
+app.get("/test", async (req, res) => {
+  const pool = await connectDB();
+  const result = await pool.request().query("SELECT 1 as test");
+  res.json(result.recordset);
 });
 
-module.exports = router;
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server running"));
