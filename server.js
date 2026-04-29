@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve frontend
+// Serve frontendd
 app.use(express.static(path.join(__dirname, "public")));
 
 // API route
