@@ -1,9 +1,26 @@
 const express = require("express");
 const router = express.Router();
+const connectDB = require("../db");
 
-// example route
-router.get("/test", (req, res) => {
-  res.send("API working");
+router.post("/message", async (req, res) => {
+  try {
+    const { name, message } = req.body;
+
+    const pool = await connectDB();
+
+    await pool.request()
+      .input("name", name)
+      .input("message", message)
+      .query(`
+        INSERT INTO messages (name, message)
+        VALUES (@name, @message)
+      `);
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error inserting data");
+  }
 });
 
-module.exports = router; // ✅ THIS IS IMPORTANT
+module.exports = router;

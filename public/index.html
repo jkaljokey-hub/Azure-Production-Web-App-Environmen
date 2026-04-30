@@ -5,10 +5,32 @@
 </head>
 <body>
   <h1>Mini Fullstack Node.js App</h1>
-  <button onclick="callApi()">Call Backend API</button>
+
+  <!-- Form -->
+  <input type="text" id="name" placeholder="Your name" />
+  <input type="text" id="message" placeholder="Your message" />
+
+  <button onclick="sendMessage()">Send Message</button>
 
   <p id="response"></p>
 
-  <script src="script.js"></script>
+  <!-- ✅ JavaScript must be inside script tag -->
+  <script>
+    async function sendMessage() {
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+
+      const res = await fetch("/api/message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, message })
+      });
+
+      document.getElementById("response").innerText = "Message sent!";
+    }
+  </script>
+
 </body>
 </html>
