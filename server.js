@@ -1,19 +1,20 @@
 const express = require("express");
-app.use(express.json());
-const cors = require("cors");
-const path = require("path");
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const app = express(); // ✅ FIRST create app
 
-// Serve frontendd
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json()); // ✅ THEN use it
 
-// API route
-const messageRoute = require("./api/message");
-app.use("/api", messageRoute);
+// routes
+const messageRoutes = require("./api/message");
+app.use("/api", messageRoutes);
 
-// Azure App Service uses PORT env variable
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// test route
+app.get("/", (req, res) => {
+  res.send("Server running");
+});
+
+// start server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
