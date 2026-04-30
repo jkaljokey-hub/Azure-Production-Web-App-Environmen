@@ -5,17 +5,16 @@ const app = express();
 
 app.use(express.json());
 
-// ✅ serve frontend
+// serve frontend
 app.use(express.static(path.join(__dirname, "public")));
 
 // routes
 const messageRoutes = require("./api/message");
 app.use("/api", messageRoutes);
 
-// test route (optional)
-app.get("/", (req, res) => {
-  res.send("Server running");
-});
+// start server
+const port = process.env.PORT || 3000;
 
-const port = 3000;
-app.listen(port, () => console.log("Server running"));
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
