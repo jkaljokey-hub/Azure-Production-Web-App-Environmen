@@ -1,13 +1,9 @@
 const express = require("express");
-const connectDB = require("./db");
+const router = express.Router();
 
-const app = express();
-
-app.get("/test", async (req, res) => {
-  const pool = await connectDB();
-  const result = await pool.request().query("SELECT 1 as test");
-  res.json(result.recordset);
+// example route
+router.get("/test", (req, res) => {
+  res.send("API working");
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log("Server running"));
+module.exports = router; // ✅ THIS IS IMPORTANT
