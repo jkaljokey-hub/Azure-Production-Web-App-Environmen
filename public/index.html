@@ -14,23 +14,39 @@
 
   <p id="response"></p>
 
+<ul id="messagesList"></ul>
   <!-- ✅ JavaScript must be inside script tag -->
   <script>
-    async function sendMessage() {
-      const name = document.getElementById("name").value;
-      const message = document.getElementById("message").value;
+  async function sendMessage() {
+    const name = document.getElementById("name").value;
+    const message = document.getElementById("message").value;
 
-      const res = await fetch("/api/message", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name, message })
-      });
+    await fetch("/api/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, message })
+    });
 
-      document.getElementById("response").innerText = "Message sent!";
-    }
-  </script>
+    document.getElementById("response").innerText = "Message sent!";
+  }
+
+  // ✅ ADD THIS
+  async function loadMessages() {
+    const res = await fetch("/api/messages");
+    const data = await res.json();
+
+    const list = document.getElementById("messagesList");
+    list.innerHTML = "";
+
+    data.forEach(msg => {
+      const li = document.createElement("li");
+      li.innerText = `${msg.name}: ${msg.message}`;
+      list.appendChild(li);
+    });
+  }
+</script>
 
 </body>
 </html>
