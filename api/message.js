@@ -2,25 +2,16 @@ const express = require("express");
 const router = express.Router();
 const connectDB = require("../db");
 
-router.post("/message", async (req, res) => {
+// ✅ ADD THIS ROUTE
+router.get("/messages", async (req, res) => {
   try {
-    const { name, message } = req.body;
-
     const pool = await connectDB();
+    const result = await pool.request().query("SELECT * FROM messages");
 
-    await pool.request()
-      .input("name", name)
-      .input("message", message)
-      .query(`
-        INSERT INTO messages (name, message)
-        VALUES (@name, @message)
-      `);
-
-    res.json({ success: true });
+    res.json(result.recordset);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error inserting data");
-  }
+res.status(500).json({ error: err.message });  }
 });
 
 module.exports = router;

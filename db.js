@@ -15,12 +15,12 @@ const config = {
 async function connectDB() {
   try {
     const pool = await sql.connect(config);
-    console.log("Connected to Azure SQL");
     return pool;
   } catch (err) {
-    console.error("Connection error:", err);
+    console.error("DB Connection Error:", err);
+    throw err;
   }
 }
 
-// 👇 ADD THIS
-connectDB();
+// ✅ THIS IS THE FIX
+module.exports = connectDB;
