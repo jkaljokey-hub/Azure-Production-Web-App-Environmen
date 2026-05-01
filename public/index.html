@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mini Fullstack App</title>
+  <title>Production App</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #2563eb;
+      transform: scale(1.05);
+    }
+
+    ul {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: rgba(255,255,255,0.1);
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 6px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Mini Fullstack Node.js App</h1>
-<h2>Hello From Bakry Stagiing</h2>
-  <!-- Form -->
-  <input type="text" id="name" placeholder="Your name" />
-  <input type="text" id="message" placeholder="Your message" />
-  
-  <button onclick="sendMessage()">Send Message</button>
 
-  <p id="response"></p>
+  <div class="container">
+    <h1>Production</h1>
 
-<ul id="messagesList"></ul>
-  <!-- ✅ JavaScript must be inside script tag -->
+    <button onclick="loadMessages()">Click Me</button>
+
+    <p id="response"></p>
+
+    <ul id="messagesList"></ul>
+  </div>
+
   <script>
-  async function sendMessage() {
-    const name = document.getElementById("name").value;
-    const message = document.getElementById("message").value;
+    async function loadMessages() {
+      const res = await fetch("/api/messages");
+      const data = await res.json();
 
-    await fetch("/api/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, message })
-    });
+      document.getElementById("response").innerText = "Hello from database 👋";
 
-    document.getElementById("response").innerText = "Message sent!";
-  }
+      const list = document.getElementById("messagesList");
+      list.innerHTML = "";
 
-  // ✅ ADD THIS
-  async function loadMessages() {
-    const res = await fetch("/api/messages");
-    const data = await res.json();
-
-    const list = document.getElementById("messagesList");
-    list.innerHTML = "";
-
-    data.forEach(msg => {
-      const li = document.createElement("li");
-      li.innerText = `${msg.name}: ${msg.message}`;
-      list.appendChild(li);
-    });
-  }
-</script>
+      data.forEach(msg => {
+        const li = document.createElement("li");
+        li.innerText = `${msg.name} - ${msg.message}`;
+        list.appendChild(li);
+      });
+    }
+  </script>
 
 </body>
 </html>
