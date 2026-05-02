@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Production App</title>
+  <title>Staging App</title>
 
   <style>
     body {
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      background: linear-gradient(135deg, #7c2d12, #ea580c);
       color: white;
       display: flex;
       justify-content: center;
@@ -25,16 +25,26 @@
       max-width: 90%;
     }
 
+    .env-badge {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 6px 16px;
+      background: #f97316;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
     h1 {
       font-size: 64px;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       letter-spacing: 3px;
       font-weight: bold;
     }
 
     .subtitle {
       font-size: 14px;
-      color: #94a3b8;
+      color: #fed7aa;
       margin-bottom: 30px;
     }
 
@@ -43,14 +53,14 @@
       font-size: 18px;
       border: none;
       border-radius: 10px;
-      background: #3b82f6;
+      background: #1e40af;
       color: white;
       cursor: pointer;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #2563eb;
+      background: #1d4ed8;
       transform: scale(1.05);
     }
 
@@ -58,7 +68,7 @@
       margin-top: 25px;
       font-size: 20px;
       font-weight: bold;
-      color: #38bdf8;
+      color: #fde68a;
     }
 
     ul {
@@ -68,12 +78,11 @@
     }
 
     li {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       margin: 8px 0;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 20px;
-      text-align: center;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 18px;
       font-weight: bold;
     }
   </style>
@@ -82,27 +91,41 @@
 <body>
 
   <div class="container">
-    <h1>Production</h1>
-    <div class="subtitle">Live Cloud Data from Azure SQL</div>
+   
+
+    <h1>Staging</h1>
+    <div class="subtitle">Testing Environment (Safe Deployment)</div>
 
     <button onclick="loadMessages()">Fetch Data</button>
 
     <p id="response"></p>
-
     <ul id="messagesList"></ul>
   </div>
 
   <script>
     async function loadMessages() {
+      const responseText = document.getElementById("response");
+      const list = document.getElementById("messagesList");
+
       try {
+        responseText.innerText = "Loading...";
+        list.innerHTML = "";
+
         const res = await fetch("/api/messages");
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(text);
+        }
+
         const data = await res.json();
 
-        document.getElementById("response").innerText =
-          "Connected successfully to database";
+        if (data.length === 0) {
+          responseText.innerText = "Connected, but no data found";
+          return;
+        }
 
-        const list = document.getElementById("messagesList");
-        list.innerHTML = "";
+        responseText.innerText = "Connected successfully to database";
 
         data.forEach(msg => {
           const li = document.createElement("li");
@@ -112,10 +135,12 @@
 
       } catch (err) {
         console.error(err);
-        document.getElementById("response").innerText =
-          "Error connecting to database";
+        responseText.innerText = "Database connection failed";
       }
     }
+
+    // auto load on open (optional but nice)
+    window.onload = loadMessages;
   </script>
 
 </body>
