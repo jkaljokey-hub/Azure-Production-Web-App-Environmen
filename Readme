@@ -1,0 +1,188 @@
+# ECO Web App — Full Production & Staging Deployment on Azure
+A complete Node.js application deployed on Azure App Service with isolated SQL databases, private networking, monitoring, and automated CI/CD.
+
+📌 NOTE: Wherever you see “(Insert Screenshot Here)”, place your actual screenshots in that exact location.
+
+## 📘 Project Overview
+A full Node.js web application running on Azure App Service, backed by two SQL databases, secured with private endpoints, monitored through Log Analytics, and deployed automatically using GitHub Actions and Terraform.
+
+This architecture is designed for speed, safety, and reliability.
+
+## 🏗️ Architecture Diagram
+(Insert Screenshot Here — Architecture Diagram)
+
+## 🚀 Environments
+Production Environment
+Live version used by real customers
+
+Connected to Production SQL Database
+
+Runs on App Service Production Slot
+
+Fully monitored through Log Analytics
+
+(Insert Screenshot Here — Production Slot)  
+(Insert Screenshot Here — Production Database)
+
+Staging Environment
+Safe testing environment
+
+Connected to Staging SQL Database
+
+Runs on App Service Staging Slot
+
+Mirrors production for accurate testing
+
+(Insert Screenshot Here — Staging Slot)  
+(Insert Screenshot Here — Staging Database)
+
+## 🛡️ Security & Networking
+Your application is secured using:
+
+Private SQL databases (no public internet access)
+
+Private Endpoints for secure communication
+
+Private DNS Zone for internal name resolution
+
+Virtual Network for isolation
+
+(Insert Screenshot Here — Private Endpoints)  
+(Insert Screenshot Here — Private DNS Zone)
+
+## 📊 Monitoring & Logging
+Connected to Azure Log Analytics Workspace:
+
+Request logs
+
+Error logs
+
+Performance metrics
+
+SQL insights
+
+(Insert Screenshot Here — Log Analytics Workspace)  
+(Insert Screenshot Here — Monitoring Dashboard)
+
+## ⚙️ CI/CD Pipelines
+Production Deployment
+Triggered when pushing to the main branch:
+
+Builds Node.js app
+
+Uploads artifact
+
+Deploys to Production slot
+
+Zero downtime
+
+(Insert Screenshot Here — Production Workflow)
+
+Staging Deployment
+Triggered when pushing to the bakry branch:
+
+Builds Node.js app
+
+Deploys to Staging slot
+
+(Insert Screenshot Here — Staging Workflow)
+
+Terraform Infrastructure
+Triggered manually or when pushing to the infra branch:
+
+Creates all Azure resources
+
+Modular and reusable
+
+Safe, repeatable deployments
+
+(Insert Screenshot Here — Terraform Workflow)
+
+📁 Repository Structure
+Code
+ECO-APP-FULLSTACK/
+│
+├── app/                     # Node.js application
+│   ├── public/
+│   ├── routes/
+│   ├── views/
+│   ├── server.js
+│   └── package.json
+│
+├── terraform/               # Infrastructure as Code
+│   ├── main.tf
+│   ├── providers.tf
+│   ├── backend.tf
+│   ├── variables.tf
+│   ├── outputs.tf
+│   └── modules/
+│       ├── app_service/
+│       ├── app_service_slot/
+│       ├── sql_server/
+│       ├── sql_database/
+│       ├── private_endpoint/
+│       ├── network/
+│       ├── log_analytics/
+│       └── resource_group/
+│
+└── .github/
+    └── workflows/
+        ├── deploy-prod.yml
+        ├── deploy-staging.yml
+        └── terraform.yml
+(Insert Screenshot Here — VS Code Folder Structure)
+
+## 🧩 Key Features
+Two isolated environments (Production & Staging)
+
+Two SQL databases
+
+Zero‑downtime deployments
+
+Private networking (no public SQL access)
+
+Full monitoring & logging
+
+Modular Terraform infrastructure
+
+Clean CI/CD pipelines
+
+## 📦 Deployment Instructions
+1. Deploy Infrastructure
+Code
+cd terraform
+terraform init
+terraform plan -var-file="env/prod.tfvars"
+terraform apply -var-file="env/prod.tfvars"
+2. Deploy Application
+Push to:
+
+main → Production
+
+bakry → Staging
+
+GitHub Actions handles the deployment automatically.
+
+📸 Screenshots
+Place all screenshots inside:
+
+Code
+assets/
+Then reference them in the README where indicated.
+
+🧠 What This Project Demonstrates
+Real multi‑environment cloud architecture
+
+Secure private networking
+
+Terraform modular design
+
+Automated CI/CD with GitHub Actions
+
+Zero‑downtime deployment strategy
+
+Cost‑efficient Azure setup
+
+📬 Contact
+Abubakar — Cloud Engineer & Azure Administrator  
+Building secure, scalable, and automated cloud solutions.
