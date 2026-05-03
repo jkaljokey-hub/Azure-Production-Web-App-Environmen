@@ -60,6 +60,6 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'eco-web'
-          slot-name: 'staging'
+          slot-name: 'production'
           package: .
           
