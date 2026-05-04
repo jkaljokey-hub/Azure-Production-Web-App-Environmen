@@ -24,7 +24,7 @@ A full Node.js web application running on Azure App Service, backed by two SQL d
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/ChatGPT%20Image%20May%203,%202026,%2002_23_20%20PM.png?raw=true)
 
 ## 🚀 Environments
-### Production Environment
+### 1.Production Environment
 
 Live version used by real customers
 
@@ -45,7 +45,7 @@ Production Database
 ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/prdb.png?raw=true)
 
 ------------------------------------------------------------------------------------------------------------------------
-### Staging Environment
+### 2.Staging Environment
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/Screenshot%20from%202026-05-03%2013-51-03.png?raw=true)
  
 - Safe testing environment
