@@ -63,7 +63,7 @@ Your application is secured using:
 
 -  Virtual Network for isolation
 
- ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/Screenshot%20from%202026-05-03%2013-51-52.png?raw=true)
+ ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/end.png?raw=true)
 
 ## 📊 Monitoring & Logging
 Connected to Azure Log Analytics Workspace:
