@@ -125,6 +125,7 @@ Fired alert
 
 📬 Email Alert for Failed Database Requests
 
+![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/z.png?raw=true)
 
  -----------------------------------------------------------------------------------------------------------------------
  
