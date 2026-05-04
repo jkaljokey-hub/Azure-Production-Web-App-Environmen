@@ -29,7 +29,7 @@ Production Slot
 
 Production Database
 
-![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/databaseprod.png?raw=true)
+![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/prdb.png?raw=true)
 
 ------------------------------------------------------------------------------------------------------------------------
 ### Staging Environment
