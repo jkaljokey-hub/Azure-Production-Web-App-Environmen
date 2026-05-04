@@ -1,10 +1,9 @@
-# ECO Web App — Full Production & Staging Deployment on Azure
+# Cloud-Based Multi-Environment Application
 A complete Node.js application deployed on Azure App Service with isolated SQL databases, private networking, monitoring, and automated CI/CD.
-
-
 
 ## 📘 Project Overview
 A full Node.js web application running on Azure App Service, backed by two SQL databases, secured with private endpoints, monitored through Log Analytics, and deployed automatically using GitHub Actions and Terraform.
+
 
 This architecture is designed for speed, safety, and reliability.
 
