@@ -101,6 +101,31 @@ AppServiceHTTPLogs
  Log stream show succsuful connecting to database and also its a powerful monitor 
  
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/prodlog.png?raw=true)
+
+
+### 🔔 Database Failure Alert
+
+This project includes an Azure Monitor alert designed to detect failed database requests.
+The alert helps ensure early detection of issues such as:
+
+-  Failed SQL authentication
+
+-  Query errors
+
+- Connection timeouts
+
+- Application‑level database failures (HTTP 500 errors)
+
+Fired alert
+
+
+
+
+
+
+📬 Email Alert for Failed Database Requests
+
+
  -----------------------------------------------------------------------------------------------------------------------
  
 ## ⚙️ CI/CD Pipelines
