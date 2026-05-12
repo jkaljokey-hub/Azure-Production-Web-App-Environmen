@@ -95,10 +95,10 @@ AppServiceHTTPLogs
 | project TimeGenerated, CsMethod, CsUriStem, ScStatus, TimeTaken, UserAgent
 | order by TimeGenerated desc
 ```
- Log Analytics Workspace
+ a.Log Analytics Workspace
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/Screenshot%20from%202026-05-03%2013-51-52.png?raw=true)
  
- Log stream show succsuful connecting to database and also its a powerful monitor 
+b.Log stream show succsuful connecting to database and also its a powerful monitor 
  
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/prodlog.png?raw=true)
 
