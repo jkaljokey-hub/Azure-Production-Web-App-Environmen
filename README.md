@@ -36,11 +36,11 @@ Live version used by real customers
 
 - Fully monitored through Log Analytics
 
-Production Slot  
+a.Production Slot  
 
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/proslot.png?raw=true)
 
-Production Database
+b.Production Database
 
 ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Cloud-Based-Multi-Environment-Application/blob/main/terraform/assets/prdb.png?raw=true)
 
@@ -56,10 +56,10 @@ Production Database
 
 - Mirrors production for accurate testing
 
-Staging Slot
+a.Staging Slot
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/stagslot.png?raw=true)
 
-Staging Database
+b.Staging Database
  ![ERP Azure Architecture](https://github.com/jkaljokey-hub/Azure-Production-Web-App-Environmen/blob/main/terraform/assets/sta.png?raw=true)
 
 
